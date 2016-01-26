@@ -1,0 +1,13 @@
+<h2>Outbox</h2>
+<table class="table table-bordered">
+  <tr>
+    <th>Reciever</th>
+    <th>Subject</th>
+    <th>Timer</th>
+  </tr>
+  <tr ng-repeat="email in emails">
+    <td>{{email.receiver_email}}</td>
+    <td>{{email.content}}</td>
+    <td>{{email.created_at}}</td>
+  </tr>
+</table>

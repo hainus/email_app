@@ -1,0 +1,14 @@
+<h2>Inbox</h2>
+<table class="table table-bordered">
+  <tr>
+    <th>Sender</th>
+    <th>Subject</th>
+    <th>Timer</th>
+  </tr>
+  <tr ng-repeat="email in emails">
+
+    <td><a href="#/email_detail/{{email.id}}">{{email.sender_email}}</a> </td>
+    <td>{{email.subject}}</td>
+    <td>{{email.created_at}}</td>
+  </tr>
+</table>

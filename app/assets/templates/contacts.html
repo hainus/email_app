@@ -1,0 +1,15 @@
+<h2>Contacts</h2>
+<table class="table table-bordered">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone Number</th>
+  </tr>
+  <tr ng-repeat="contact in contacts">
+    <td>{{contact.name}}</td>
+    <td>{{contact.email}}</td>
+    <td>{{contact.phone_number}}</td>
+  </tr>
+</table>
+<a href="#/new" class="btn btn-primary">Add new contact</a>
+

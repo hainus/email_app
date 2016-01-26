@@ -1,0 +1,29 @@
+
+common: &common 
+  adapter: postgresql 
+  encoding: utf8 
+  pool: 25 
+  username: postgres 
+  host: localhost 
+  password: postgres 
+
+
+development:
+  database: email_app
+  min_messages: warning 
+  <<: *common 
+
+
+test:
+  database: email_app
+  min_messages: warning 
+  <<: *common  
+
+production:
+  database: email_app
+  min_messages: warning 
+  <<: *common  
+
+
+
+
