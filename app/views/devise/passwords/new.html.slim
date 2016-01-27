@@ -1,0 +1,19 @@
+= devise_error_messages!
+.col-md-4.col-md-offset-4.col-sm-8.col-sm-offset-2
+  .panel.panel-info
+    .panel-heading
+      .panel-title Forgot Your Password
+    .panel-body
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "form-horizontal" }) do |f|
+        .input-group.space-below
+          span.input-group-addon
+            i.glyphicon.glyphicon-user
+          = f.email_field :email, autofocus: true, class: "form-control", placeholder: "email"
+        .form-group style="margin-top:10px"
+          .col-sm-12.controls
+            = f.submit "Reset password", class: "btn btn-success"
+        .form-group
+          .col-md-12.control
+            .devise-links
+              = render "devise/shared/links"
+
