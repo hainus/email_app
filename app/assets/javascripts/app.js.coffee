@@ -25,7 +25,11 @@ email_app.config(['$routeProvider', ($routeProvider) ->
   }).
   when('/contacts', {
     templateUrl: '/assets/contacts/index.html',
-    controller: 'ContactsIndexController'
+    controller: 'ContactCtrl'
+  }).
+  when('/contacts/new', {
+    templateUrl: '/assets/contacts/form.html',
+    controller: 'newContactCtrl'
   }).
   when('/new', {
     templateUrl: '/assets/form.html',

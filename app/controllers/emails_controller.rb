@@ -1,6 +1,5 @@
 class EmailsController < ApplicationController
   def create
-    # raise params.inspect
     email = Email.new
     email.subject  = params[:subject]
     email.content  = params[:content]
@@ -8,9 +7,13 @@ class EmailsController < ApplicationController
     email.receiver_email  = params[:email]
     email.user_id  = current_user.id
     email.sender_email  = current_user.email
-    attach_files   = params[:attach_files]
 
-    email.save
+    if email.save
+      attachment = AttachFile.new
+      attachment.email_id = email.id
+      attachment.attach_file = params[:file]
+      attachment.save
+    end
 
     render :json => {success: email}
   end
@@ -31,8 +34,8 @@ class EmailsController < ApplicationController
     render :json => {emails: emails}
   end
 
-  # def email_detail
-  #   email_detail = Email.where(user_id: current_user.id, draf: true)
-  #   render :json => {emails: emails}
-  # end
+  def detail
+    email_detail = Email.where(id: params[:id]).first
+    render :json => {email: email_detail.as_json(attachments: true)}
+  end
 end

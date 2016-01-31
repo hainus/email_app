@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get 'inbox'
       get 'outbox'
       get 'draft'
+      get 'detail'
     end
   end
 end
