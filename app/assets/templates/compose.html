@@ -4,22 +4,15 @@
   <div class="form-group">
     <label for="email" class="col-sm-2 control-label">To</label>
 
-    <div class="col-sm-6">
-      <input type="email" class="form-control" id="email" placeholder="Email..." ng-model="message.email">
-    </div>
-
-    <!-- <div class="col-md-7">
-      <ui-select multiple ng-model="list.receivers" theme="bootstrap" ng-disabled="disabled" sortable="true" require-multiple name="receivers">
+    <div class="col-md-6">
+      <ui-select multiple ng-model="receivers.receivers" theme="bootstrap" ng-disabled="disabled" sortable="true">
         <ui-select-match>{{$item.email}}</ui-select-match>
         <ui-select-choices repeat="contact in contacts | filter: {name: $select.search}">
           <div ng-bind-html="contact.name | highlight: $select.search"></div>
-          <small>
-            {{contact.email}}
-          </small>
+            ({{contact.email}})
         </ui-select-choices>
       </ui-select>
-      <small class="help-block" ng-show="form.receivers.$error.required && form.receivers.$dirty">Please enter at least one receiver</small>
-    </div> -->
+    </div>
 
   </div>
 

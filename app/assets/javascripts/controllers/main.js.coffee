@@ -20,6 +20,13 @@ email_app.controller 'ComposeCtrl', [
   '$location'
   '$http'
   ($scope, $location, $http) ->
+    $scope.contacts = []
+    $scope.receivers = {
+      receivers: []
+    };
+    $http.get(Routes.contacts_path()).success (response) ->
+      $scope.contacts = response.contacts
+
     $scope.send = (message, draft) ->
       message.draft = draft
       file = $scope.myFile;
@@ -28,7 +35,7 @@ email_app.controller 'ComposeCtrl', [
       fd.append('subject', message.subject)
       fd.append('content', message.content)
       fd.append('draft', draft)
-      fd.append('email', message.email)
+      fd.append('email', $scope.receivers.receivers[0].email)
 
       $http.post(Routes.emails_path(), fd, {transformRequest: angular.identity, headers: {'Content-Type': undefined}})
       $location.path(Routes.emails_path())

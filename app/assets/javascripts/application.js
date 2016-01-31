@@ -13,12 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
-//= require angular
+//= require angular.min
 //= require angular-resource
 //= require app
 //= require bootstrap
 //= require angular-route
 //= require ng-table
 //= require js-routes
+//= require angular-sanitize.min
+//= require select
 //= require main
 //= require_tree ../templates
