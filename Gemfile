@@ -30,6 +30,7 @@ gem 'omniauth', '~> 1.3', '>= 1.3.1'
 gem 'sprockets', '2.12.3'
 gem 'paperclip', '~> 4.3', '>= 4.3.2'
 gem 'js-routes'
+gem 'rake', '~> 10.5'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

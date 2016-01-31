@@ -1,0 +1,4 @@
+<p><strong>{{attachments.length}} attachments</strong></p>
+<div ng-repeat="attachment in attachments">
+  <a href="{{attachment.data}}" target="_blank">{{attachment.data_file_name}} ({{attachment.data_file_size | bytes}})</a>
+</div>

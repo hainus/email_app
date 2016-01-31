@@ -21,26 +21,26 @@ email_app.directive("headermenu", function($location) {
   };
 });
 
-email_app.directive('requireMultiple', function() {
+email_app.directive('attachments', function() {
   return {
-    require: 'ngModel',
-    link: function postLink(scope, element, attrs, ngModel) {
-      ngModel.$validators.required = function (value) {
-          return angular.isArray(value) && value.length > 0;
-      };
+    restrict: 'E',
+    templateUrl: 'assets/attach_files.html',
+    scope: {
+      attachments: '=list'
     }
   };
 });
-
-// email_app.directive('attachments', function() {
+// email_app.directive('requireMultiple', function() {
 //   return {
-//     restrict: 'E',
-//     templateUrl: 'assets/_attachments.html',
-//     scope: {
-//       attachments: '=list'
+//     require: 'ngModel',
+//     link: function postLink(scope, element, attrs, ngModel) {
+//       ngModel.$validators.required = function (value) {
+//           return angular.isArray(value) && value.length > 0;
+//       };
 //     }
 //   };
 // });
+
 
 // email_app.directive('notifications', function(NotificationService) {
 //   return {

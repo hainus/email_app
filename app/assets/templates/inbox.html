@@ -12,3 +12,23 @@
     <td>{{email.created_at}}</td>
   </tr>
 </table>
+
+
+<table ng-table="tableParams" show-filter="true" class="table table-condensed table-bordered table-striped">
+  <tbody>
+    <tr ng-repeat="message in $data">
+      <td data-title="'Sender'" filter="{ 'email': 'text' }" sortable="'users.email'">
+        <a href="#/messages/{{message.id}}/detail">{{message.sender}}</a>
+      </td>
+      <td data-title="'Subject'" filter="{ 'subject': 'text' }" sortable="'subject'">
+        <a href="#/messages/{{message.id}}/detail">{{message.subject}}</a>
+      </td>
+      <td data-title="'Sent time'" sortable="'sent_time'">
+        <a href="#/messages/{{message.id}}/detail">{{message.sent_time | date:'short'}}</a>
+      </td>
+      <td>
+        <a href="" class="btn btn-danger btn-sm" ng-click="destroy(message.id)">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -6,7 +6,7 @@ underscore.factory '_', [
     $window._
 ]
 
-@email_app = angular.module('email_app', ['ngRoute', 'ngTable', 'underscore'])
+@email_app = angular.module('email_app', ['ngResource', 'ngRoute', 'ngTable', 'underscore'])
 
 # Sets up routing
 email_app.config(['$routeProvider', ($routeProvider) ->
@@ -24,8 +24,8 @@ email_app.config(['$routeProvider', ($routeProvider) ->
     controller: 'ComposeCtrl'
   }).
   when('/contacts', {
-    templateUrl: '/assets/contacts.html',
-    controller: 'ContactCtrl'
+    templateUrl: '/assets/contacts/index.html',
+    controller: 'ContactsIndexController'
   }).
   when('/new', {
     templateUrl: '/assets/form.html',
