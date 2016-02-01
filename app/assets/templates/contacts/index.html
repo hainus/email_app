@@ -4,11 +4,22 @@
     <th>Name</th>
     <th>Email</th>
     <th>Phone Number</th>
+    <th>Actions</th>
   </tr>
-  <tr ng-repeat="contact in contacts">
+  <tr>
+    <th><input type="text" class="form-control" placeholder="search by name" ng-model="search.name"></th>
+    <th><input type="text" class="form-control" placeholder="search by email" ng-model="search.email"></th>
+    <th><input type="text" class="form-control" placeholder="search by phone number" ng-model="search.phone_number"></th>
+    <th></th>
+  </tr>
+  <tr ng-repeat="contact in contacts | filter:{name: search.name, email: search.email, phone_number: search.phone_number}">
     <td>{{contact.name}}</td>
     <td>{{contact.email}}</td>
     <td>{{contact.phone_number}}</td>
+    <td>
+      <a href="#/contacts/{{contact.id}}/edit" class="btn btn-success btn-sm">Edit</a>
+      <a href="" class="btn btn-danger btn-sm" ng-click="destroy(contact.id)">Delete</a>
+    </td>
   </tr>
 </table>
 </br>

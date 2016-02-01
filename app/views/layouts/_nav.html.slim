@@ -21,10 +21,15 @@ nav.navbar.navbar-fixed-left.navbar-default
       ul.nav.navbar-nav.navbar-right
         li.dropdown
           a.dropdown-toggle data-toggle="dropdown"
-            = current_user.username
+            |Notifications
             b.caret
           ul.dropdown-menu
             li
-              = link_to 'Notification', '#'
+              |aaaaaaa
+        li.dropdown
+          a.dropdown-toggle data-toggle="dropdown"
+            = current_user.username
+            b.caret
+          ul.dropdown-menu
             li
               = link_to 'Log out', destroy_user_session_path, method: :delete

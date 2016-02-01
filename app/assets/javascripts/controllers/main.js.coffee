@@ -95,3 +95,12 @@ email_app.controller 'newContactCtrl', [
       $location.path(Routes.contacts_path())
       return
 ]
+
+email_app.controller 'editContactCtrl', [
+  '$scope'
+  '$routeParams'
+  '$http'
+  ($scope, $routeParams, $http) ->
+    $scope.updateContact = (contact) ->
+      return $http.get(Routes.edit_contact_path({id: contact.id}));
+]

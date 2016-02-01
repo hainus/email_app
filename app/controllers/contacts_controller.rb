@@ -14,6 +14,14 @@ class ContactsController < ApplicationController
     render :json => {success: contact}
   end
 
+  def edit
+     result = false
+        if @contact.update(contact_params)
+          result = true
+        end
+    render :json => {success: result}
+  end
+
 
 
 end

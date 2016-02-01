@@ -9,10 +9,19 @@ class EmailsController < ApplicationController
     email.sender_email  = current_user.email
 
     if email.save
-      attachment = AttachFile.new
-      attachment.email_id = email.id
-      attachment.attach_file = params[:file]
-      attachment.save
+      # if email.draf
+
+        Notification.create(
+          user_id: current_user.id,
+          email_id: email.id,
+          message: I18n.t("notification_message", name: current_user.email)
+        )
+
+        attachment = AttachFile.new
+        attachment.email_id = email.id
+        attachment.attach_file = params[:file]
+        attachment.save
+      # end
     end
 
     render :json => {success: email}

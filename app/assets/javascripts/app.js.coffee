@@ -6,6 +6,7 @@ underscore.factory '_', [
     $window._
 ]
 
+
 @email_app = angular.module('email_app', ['ngResource', 'ngRoute', 'ngTable', 'underscore', 'ui.select', 'ngSanitize'])
 
 # Sets up routing
@@ -30,6 +31,10 @@ email_app.config(['$routeProvider', ($routeProvider) ->
   when('/contacts/new', {
     templateUrl: '/assets/contacts/form.html',
     controller: 'newContactCtrl'
+  }).
+  when('/contacts/:id/edit', {
+    templateUrl: '/assets/contacts/form.html',
+    controller: 'editContactCtrl'
   }).
   when('/drafts', {
     templateUrl: '/assets/drafts.html',

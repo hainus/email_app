@@ -5,7 +5,12 @@
     <th>Subject</th>
     <th>Timer</th>
   </tr>
-  <tr ng-repeat="email in emails">
+  <tr>
+    <th><input type="text" class="form-control" placeholder="search by sender email" ng-model="search.sender_email"></th>
+    <th><input type="text" class="form-control" placeholder="search by subject" ng-model="search.subject"></th>
+    <th></th>
+  </tr>
+  <tr ng-repeat="email in emails | filter:{sender_email: search.sender_email, subject: search.subject}">
 
     <td><a href="#/email_detail/{{email.id}}">{{email.sender_email}}</a> </td>
     <td>{{email.subject}}</td>

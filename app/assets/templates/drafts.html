@@ -4,7 +4,11 @@
     <th>Subject</th>
     <th>Edit</th>
   </tr>
-  <tr ng-repeat="email in emails">
+  <tr>
+    <th><input type="text" class="form-control" placeholder="search by subject" ng-model="search.subject"></th>
+    <th></th>
+  </tr>
+  <tr ng-repeat="email in emails | filter:{subject: search.subject}">
     <td>{{email.subject}}</td>
     <td>edit</td>
   </tr>
