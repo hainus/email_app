@@ -12,7 +12,8 @@
     <th><input type="text" class="form-control" placeholder="search by phone number" ng-model="search.phone_number"></th>
     <th></th>
   </tr>
-  <tr ng-repeat="contact in contacts | filter:{name: search.name, email: search.email, phone_number: search.phone_number}">
+  <!-- paging -->
+  <tr dir-paginate="contact in contacts | filter:{name: search.name, email: search.email, phone_number: search.phone_number} | itemsPerPage: 5" pagination-id="contact">
     <td>{{contact.name}}</td>
     <td>{{contact.email}}</td>
     <td>{{contact.phone_number}}</td>
@@ -22,5 +23,6 @@
     </td>
   </tr>
 </table>
+<dir-pagination-controls pagination-id="contact"></dir-pagination-controls>
 </br>
 <a href="#/contacts/new" class="btn btn-primary btn-sm add-new">New contact</a>

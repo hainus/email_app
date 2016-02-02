@@ -7,7 +7,7 @@ underscore.factory '_', [
 ]
 
 
-@email_app = angular.module('email_app', ['ngResource', 'ngRoute', 'ngTable', 'underscore', 'ui.select', 'ngSanitize'])
+@email_app = angular.module('email_app', ['ngResource', 'ngRoute', 'ngTable', 'underscore', 'ui.select', 'ngSanitize', 'angularUtils.directives.dirPagination'])
 
 # Sets up routing
 email_app.config(['$routeProvider', ($routeProvider) ->
@@ -51,6 +51,10 @@ email_app.config(['$routeProvider', ($routeProvider) ->
   when('/outbox', {
     templateUrl: '/assets/outbox.html',
     controller: 'OutboxCtrl'
+  }).
+  when('/notifications', {
+    templateUrl: '/assets/_notifications.html',
+    controller: 'NotificationCtrl'
   }).
   otherwise({ redirectTo: '/inbox' } )
 

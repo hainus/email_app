@@ -21,6 +21,7 @@
 //= require ng-table
 //= require js-routes
 //= require angular-sanitize.min
+//= require angularUtils-pagination
 //= require select
 //= require main
 //= require_tree ../templates

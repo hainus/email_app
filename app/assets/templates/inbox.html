@@ -10,10 +10,12 @@
     <th><input type="text" class="form-control" placeholder="search by subject" ng-model="search.subject"></th>
     <th></th>
   </tr>
-  <tr ng-repeat="email in emails | filter:{sender_email: search.sender_email, subject: search.subject}">
+  <!-- paging -->
+  <tr dir-paginate="email in emails | filter:{sender_email: search.sender_email, subject: search.subject} | itemsPerPage: 5" pagination-id="inbox">
 
     <td><a href="#/email_detail/{{email.id}}">{{email.sender_email}}</a> </td>
     <td>{{email.subject}}</td>
     <td>{{email.created_at}}</td>
   </tr>
 </table>
+<dir-pagination-controls pagination-id="inbox"></dir-pagination-controls>

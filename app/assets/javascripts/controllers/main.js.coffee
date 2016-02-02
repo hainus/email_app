@@ -104,3 +104,11 @@ email_app.controller 'editContactCtrl', [
     $scope.updateContact = (contact) ->
       return $http.get(Routes.edit_contact_path({id: contact.id}));
 ]
+
+email_app.controller 'NotificationCtrl', [
+  '$scope'
+  '$http'
+  ($scope, $http) ->
+    $http.get(Routes.notifications_path()).success (response) ->
+      $scope.notifications = response.notifications
+]

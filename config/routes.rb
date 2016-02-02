@@ -14,4 +14,5 @@ Rails.application.routes.draw do
       get 'detail'
     end
   end
+  resources :notifications
 end
