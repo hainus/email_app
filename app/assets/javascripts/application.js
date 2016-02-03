@@ -16,6 +16,7 @@
 //= require angular.min
 //= require angular-resource
 //= require app
+//= require directives
 //= require bootstrap
 //= require angular-route
 //= require ng-table
