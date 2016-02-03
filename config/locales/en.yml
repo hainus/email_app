@@ -21,4 +21,4 @@
 
 en:
   hello: "Hello world"
-  notification_message: "%{name} has sent a message to you"
+  notification_message: "%{name} sent you a email"

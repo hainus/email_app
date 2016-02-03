@@ -12,7 +12,7 @@ class EmailsController < ApplicationController
       # if email.draf
 
         Notification.create(
-          user_id: current_user.id,
+          user_id: User.where(email: params[:email]).first.id,
           email_id: email.id,
           message: I18n.t("notification_message", name: current_user.email)
         )

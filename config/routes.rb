@@ -14,5 +14,9 @@ Rails.application.routes.draw do
       get 'detail'
     end
   end
-  resources :notifications
+  resources :notifications do
+    collection do
+      put 'update_all_read'
+    end
+  end
 end
