@@ -53,7 +53,7 @@ email_app.config(['$routeProvider', ($routeProvider) ->
     controller: 'OutboxCtrl'
   }).
   when('/notifications', {
-    templateUrl: '/assets/_notifications.html',
+    templateUrl: '/assets/notifications.html',
     controller: 'NotificationCtrl'
   }).
   otherwise({ redirectTo: '/inbox' } )

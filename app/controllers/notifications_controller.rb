@@ -1,7 +1,7 @@
 class NotificationsController < ApplicationController
   def index
     render :json => {
-      Notification.user_noti(current_user.id).order("id DESC").limit(10)
+      notifications: Notification.where(user_id: current_user.id).limit(10)
     }
   end
 end
