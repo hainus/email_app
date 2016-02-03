@@ -1,26 +1,30 @@
 <h2>Contacts</h2>
+
+Sort by:
+<select ng-model="orderProp" class="form-control" style='width: 120px'>
+  <option value="name">Name</option>
+  <option value="email">Email</option>
+  <option value="phone_number">Phone number</option>
+</select>
+<p>
+
 <table class="table table-bordered">
   <tr>
     <th>Name</th>
     <th>Email</th>
     <th>Phone Number</th>
-    <th>Actions</th>
   </tr>
   <tr>
     <th><input type="text" class="form-control" placeholder="search by name" ng-model="search.name"></th>
     <th><input type="text" class="form-control" placeholder="search by email" ng-model="search.email"></th>
     <th><input type="text" class="form-control" placeholder="search by phone number" ng-model="search.phone_number"></th>
-    <th></th>
   </tr>
+
   <!-- paging -->
-  <tr dir-paginate="contact in contacts | filter:{name: search.name, email: search.email, phone_number: search.phone_number} | itemsPerPage: 5" pagination-id="contact">
+  <tr dir-paginate="contact in contacts | filter:{name: search.name, email: search.email, phone_number: search.phone_number} | orderBy:orderProp | itemsPerPage: 5" pagination-id="contact">
     <td>{{contact.name}}</td>
     <td>{{contact.email}}</td>
     <td>{{contact.phone_number}}</td>
-    <td>
-      <a href="#/contacts/{{contact.id}}/edit" class="btn btn-success btn-sm">Edit</a>
-      <a href="" class="btn btn-danger btn-sm" ng-click="destroy(contact.id)">Delete</a>
-    </td>
   </tr>
 </table>
 <dir-pagination-controls pagination-id="contact"></dir-pagination-controls>

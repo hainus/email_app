@@ -45,10 +45,13 @@ email_app.controller 'ComposeCtrl', [
 email_app.controller 'InboxCtrl', [
   '$scope'
   '$http'
-  ($scope, $http) ->
+  '$interval'
+  mail_box= ($scope, $http, $interval) ->
     $http.get(Routes.inbox_emails_path()).success (response) ->
       $scope.emails = response.emails
+      $scope.orderProp = 'sender_email'
 ]
+
 
 email_app.controller 'EmailDetailsCtrl', [
   '$scope'
@@ -66,6 +69,7 @@ email_app.controller 'OutboxCtrl', [
   ($scope, $http) ->
     $http.get(Routes.outbox_emails_path()).success (response) ->
       $scope.emails = response.emails
+      $scope.orderProp = 'receiver_email'
 ]
 
 email_app.controller 'DrafCtrl', [
@@ -82,6 +86,8 @@ email_app.controller 'ContactCtrl', [
   ($scope, $http) ->
     $http.get(Routes.contacts_path()).success (response) ->
       $scope.contacts = response.contacts
+      $scope.orderProp = 'name';
+
 ]
 
 

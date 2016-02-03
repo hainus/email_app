@@ -1,11 +1,5 @@
-<div class="dropdown">
-  <a class="dropdown-toggle" data-toggle="dropdown" ng-click="markRead()">
-    Notifications
-    <!-- <span id="unread-number" class="badge" ng-show="unread_count > 0">{{unread_count}}</span> -->
-  <a>
-  <ul class="dropdown-menu">
-    <li ng-repeat="notification in notifications">
-      <a href="#/notifications/{{notification.email_id}}/detail">{{notification.message}}</a>
-    </li>
-  </ul>
-</div>
+<table>
+  <tr ng-repeat="notification in notifications">
+    <a href="#/notifications/{{notification.email_id}}/detail">{{notification.message}}</a>
+  </li>
+</table>>

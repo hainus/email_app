@@ -2,16 +2,13 @@
 <table class="table table-bordered">
   <tr>
     <th>Subject</th>
-    <th>Edit</th>
   </tr>
   <tr>
     <th><input type="text" class="form-control" placeholder="search by subject" ng-model="search.subject"></th>
-    <th></th>
   </tr>
   <!-- paging -->
   <tr dir-paginate="email in emails | filter:{subject: search.subject} | itemsPerPage: 5" pagination-id="draft">
     <td>{{email.subject}}</td>
-    <td>edit</td>
   </tr>
 </table>
 <dir-pagination-controls pagination-id="draft"></dir-pagination-controls>

@@ -1,4 +1,13 @@
 <h2>Inbox</h2>
+
+Sort by:
+<select ng-model="orderProp" class="form-control" style='width: 120px'>
+  <option value="sender_email">Sender</option>
+  <option value="subject">Subject</option>
+  <option value="created_at">Timer</option>
+</select>
+<p>
+
 <table class="table table-bordered">
   <tr>
     <th>Sender</th>
@@ -8,10 +17,10 @@
   <tr>
     <th><input type="text" class="form-control" placeholder="search by sender email" ng-model="search.sender_email"></th>
     <th><input type="text" class="form-control" placeholder="search by subject" ng-model="search.subject"></th>
-    <th></th>
+    <th><input type="text" class="form-control" placeholder="search by subject" ng-model="search.created_at"></th>
   </tr>
   <!-- paging -->
-  <tr dir-paginate="email in emails | filter:{sender_email: search.sender_email, subject: search.subject} | itemsPerPage: 5" pagination-id="inbox">
+  <tr dir-paginate="email in emails | filter:{sender_email: search.sender_email, subject: search.subject, created_at: search.created_at} | orderBy:orderProp | itemsPerPage: 5" pagination-id="inbox">
 
     <td><a href="#/email_detail/{{email.id}}">{{email.sender_email}}</a> </td>
     <td>{{email.subject}}</td>
