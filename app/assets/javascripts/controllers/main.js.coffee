@@ -46,10 +46,14 @@ email_app.controller 'InboxCtrl', [
   '$scope'
   '$http'
   '$interval'
-  mail_box= ($scope, $http, $interval) ->
-    $http.get(Routes.inbox_emails_path()).success (response) ->
-      $scope.emails = response.emails
-      $scope.orderProp = 'sender_email'
+  ($scope, $http, $interval) ->
+    mail_box = ->
+      $http.get(Routes.inbox_emails_path()).success (response) ->
+        $scope.emails = response.emails
+        $scope.orderProp = 'sender_email'
+    mail_box()
+    $interval(mail_box, 10000);
+
 ]
 
 
