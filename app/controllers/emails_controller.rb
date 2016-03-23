@@ -1,4 +1,9 @@
 class EmailsController < ApplicationController
+  def index
+    emails = Email.where(user_id: current_user.id)
+    render :json => {emails: emails}
+  end
+  
   def create
     email = Email.new
     email.subject  = params[:subject]
@@ -31,6 +36,14 @@ class EmailsController < ApplicationController
     emails = Email.where(receiver_email: current_user.email)
     render :json => {emails: emails}
 
+  end
+
+  def destroy
+    emails = Email.where(user_id: current_user.id)
+    email = Email.find(params[:id])
+    email.destroy
+
+    render :json => {success: emails}
   end
 
   def outbox

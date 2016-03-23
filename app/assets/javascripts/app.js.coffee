@@ -37,7 +37,7 @@ email_app.config(['$routeProvider', ($routeProvider) ->
     controller: 'editContactCtrl'
   }).
   when('/contacts/delete', {
-    controller: 'deleteContactCtrl',
+    controller: 'deleteContactCtrl'
   }).
 
   when('/drafts', {
@@ -51,6 +51,9 @@ email_app.config(['$routeProvider', ($routeProvider) ->
   when('/email_detail/:emailID', {
     templateUrl: '/assets/email_details.html',
     controller: 'EmailDetailsCtrl'
+  }).
+  when('/emails/delete', {
+    controller: 'deleteEmailCtrl'
   }).
   when('/outbox', {
     templateUrl: '/assets/outbox.html',

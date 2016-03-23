@@ -53,7 +53,25 @@ email_app.controller 'InboxCtrl', [
         $scope.orderProp = 'sender_email'
     mail_box()
     $interval(mail_box, 10000);
+    $scope.destroy = (id) ->
+      if confirm('Are you sure you want to delete this email?')
+        $http.delete(Routes.email_path({id: id})).success (response) ->
+          $http.get(Routes.emails_path()).success (response) ->
+            $scope.emails = response.emails
+            console.log(response.emails)
 
+]
+
+email_app.controller 'deleteEmailCtrl', [
+  '$scope'
+  '$location'
+  '$http'
+  ($scope, $location, $http) ->
+    $scope.save = (email) ->
+      $http.post(Routes.emails_path(), email)
+      $location.path(Routes.email_path())
+      return
+    
 ]
 
 
