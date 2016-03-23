@@ -91,6 +91,11 @@ email_app.controller 'ContactCtrl', [
     $http.get(Routes.contacts_path()).success (response) ->
       $scope.contacts = response.contacts
       $scope.orderProp = 'name';
+    $scope.destroy = (id) ->
+      if confirm('Are you sure you want to delete this contact?')
+        $http.delete(Routes.contact_path({id: id})).success (response) ->
+          $http.get(Routes.contacts_path()).success (response) ->
+            $scope.contacts = response.contacts
 
 ]
 
@@ -111,7 +116,18 @@ email_app.controller 'editContactCtrl', [
   '$routeParams'
   '$http'
   ($scope, $routeParams, $http) ->
-    $scope.updateContact = (contact) ->
-      return $http.get(Routes.edit_contact_path({id: contact.id}));
+    $http.get(Routes.edit_contact_path({id: contact.id}))
+
+]
+
+email_app.controller 'deleteContactCtrl', [
+  '$scope'
+  '$location'
+  '$http'
+  ($scope, $location, $http) ->
+    $scope.save = (contact) ->
+      $http.post(Routes.contacts_path(), contact)
+      $location.path(Routes.contact_path())
+      return
 ]
 

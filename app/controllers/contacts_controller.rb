@@ -14,4 +14,31 @@ class ContactsController < ApplicationController
     render :json => {success: contact}
   end
 
+  def edit
+    contact = Contact.find(params[:id])
+  end
+
+  def update
+    contacts = Contact.where(user_id: current_user.id)
+    contact = Contact.find(params[:id])
+    contact.update(contact_params)
+
+    render :json => {contacts: contacts}
+  end
+
+  def destroy
+    contacts = Contact.where(user_id: current_user.id)
+    contact = Contact.find(params[:id])
+    contact.destroy
+
+    render :json => {success: contacts}
+  end
+
+  private
+
+  def contact_params
+    params.require(:contact).permit(:name, :phone_number, :email)
+  end
+
+
 end
