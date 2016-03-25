@@ -3,8 +3,9 @@ class EmailsController < ApplicationController
     emails = Email.where(user_id: current_user.id)
     render :json => {emails: emails}
   end
-  
+
   def create
+    raise params[:email].inspect
     email = Email.new
     email.subject  = params[:subject]
     email.content  = params[:content]
