@@ -9,7 +9,7 @@ class EmailsController < ApplicationController
     email.subject  = params[:subject]
     email.content  = params[:content]
     email.draf     = params[:draft]
-    email.receiver_email  = params[:email]
+    email.receiver_email  = params[:email].values
     email.user_id  = current_user.id
     email.sender_email  = current_user.email
 
@@ -38,7 +38,12 @@ class EmailsController < ApplicationController
   end
 
   def inbox
-    emails = Email.where(receiver_email: current_user.email)
+    # JSON.parse!(email.receiver_email.gsub('=>', ':')).with_indifferent_access.values.include?(current_user.email)
+    emails = []
+    Email.all.each do |email|
+      emails << email if email.receiver_email.include?(current_user.email)
+    end
+
     render :json => {emails: emails}
 
   end
@@ -53,6 +58,12 @@ class EmailsController < ApplicationController
 
   def outbox
     emails = Email.where(sender_email: current_user.email)
+
+    # emails = []
+    # Email.all.each do |email|
+    #   emails << email if JSON.parse!(email.sender_email.gsub('=>', ':')).with_indifferent_access.values.include?(current_user.email)
+    # end
+
     render :json => {emails: emails}
   end
 
