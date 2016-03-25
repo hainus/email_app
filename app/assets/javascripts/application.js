@@ -22,6 +22,7 @@
 //= require ng-table
 //= require js-routes
 //= require angular-sanitize.min
+//= require ng-file-upload.min
 //= require angularUtils-pagination
 //= require select
 //= require main

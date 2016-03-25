@@ -7,7 +7,7 @@ underscore.factory '_', [
 ]
 
 
-@email_app = angular.module('email_app', ['ngResource', 'ngRoute', 'ngTable', 'underscore', 'ui.select', 'ngSanitize', 'angularUtils.directives.dirPagination'])
+@email_app = angular.module('email_app', ['ngResource', 'ngRoute', 'ngTable', 'underscore', 'ui.select', 'ngSanitize', 'angularUtils.directives.dirPagination', 'ngFileUpload'])
 
 # Sets up routing
 email_app.config(['$routeProvider', ($routeProvider) ->

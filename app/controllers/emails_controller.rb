@@ -5,7 +5,6 @@ class EmailsController < ApplicationController
   end
 
   def create
-    raise params[:email].inspect
     email = Email.new
     email.subject  = params[:subject]
     email.content  = params[:content]
@@ -17,16 +16,21 @@ class EmailsController < ApplicationController
     if email.save
       # if email.draf
 
-        Notification.create(
-          user_id: User.where(email: params[:email]).first.id,
-          email_id: email.id,
-          message: I18n.t("notification_message", name: current_user.email)
-        )
+        # Notification.create(
+        #   user_id: User.where(email: params[:email]).first.id,
+        #   email_id: email.id,
+        #   message: I18n.t("notification_message", name: current_user.email)
+        # )
 
-        attachment = AttachFile.new
-        attachment.email_id = email.id
-        attachment.attach_file = params[:file]
-        attachment.save
+        if params[:file]
+          params[:file].values.each do |file|
+            attachment = AttachFile.new
+            attachment.email_id = email.id
+            attachment.attach_file = file
+            attachment.save
+          end
+        end
+
       # end
     end
 

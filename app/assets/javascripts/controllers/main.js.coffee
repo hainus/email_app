@@ -19,7 +19,8 @@ email_app.controller 'ComposeCtrl', [
   '$scope'
   '$location'
   '$http'
-  ($scope, $location, $http) ->
+  'Upload'
+  ($scope, $location, $http, Upload) ->
     $scope.contacts = []
     $scope.receivers = {
       receivers: []
@@ -33,18 +34,15 @@ email_app.controller 'ComposeCtrl', [
       if receivers.length > 0
         receiversEmails = _.map receivers,  (receiver) ->
           return receiver.email
-      #console.log receiversEmails
       message.draft = draft
-      file = $scope.myFile;
-      fd = new FormData()
-      fd.append('file', file)
-      fd.append('subject', message.subject)
-      fd.append('content', message.content)
-      fd.append('draft', draft)
-      fd.append('email', receiversEmails)
+      message.file = $scope.attachments
+      message.email = receiversEmails
 
-      $http.post(Routes.emails_path(), fd, {transformRequest: angular.identity, headers: {'Content-Type': undefined}})
-      $location.path(Routes.emails_path())
+      Upload.upload(
+        url: 'emails.json'
+        data: message).then (response) ->
+          $location.path(Routes.emails_path())
+        return
       return
 ]
 
