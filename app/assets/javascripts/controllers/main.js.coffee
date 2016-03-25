@@ -71,7 +71,7 @@ email_app.controller 'deleteEmailCtrl', [
       $http.post(Routes.emails_path(), email)
       $location.path(Routes.email_path())
       return
-    
+
 ]
 
 
@@ -133,8 +133,15 @@ email_app.controller 'editContactCtrl', [
   '$scope'
   '$routeParams'
   '$http'
-  ($scope, $routeParams, $http) ->
-    $http.get(Routes.edit_contact_path({id: contact.id}))
+  '$location'
+  ($scope, $routeParams, $http, $location) ->
+    $http.get(Routes.edit_contact_path({id: $routeParams.id})).success (response) ->
+      $scope.contact = response.contact
+
+    $scope.saveContact = (contact) ->
+      $http.put(Routes.contact_path({id: $routeParams.id}), contact)
+      $location.path(Routes.contacts_path())
+      return
 
 ]
 

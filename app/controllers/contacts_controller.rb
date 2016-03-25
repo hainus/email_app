@@ -16,6 +16,7 @@ class ContactsController < ApplicationController
 
   def edit
     contact = Contact.find(params[:id])
+    render :json => {contact: contact}
   end
 
   def update
