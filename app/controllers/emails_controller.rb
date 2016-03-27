@@ -44,7 +44,6 @@ class EmailsController < ApplicationController
     Email.all.each do |email|
       emails << email if email.receiver_email.include?(current_user.email)
     end
-
     render :json => {emails: emails}
 
   end
@@ -64,12 +63,6 @@ class EmailsController < ApplicationController
 
   def outbox
     emails = Email.where(sender_email: current_user.email)
-
-    # emails = []
-    # Email.all.each do |email|
-    #   emails << email if JSON.parse!(email.sender_email.gsub('=>', ':')).with_indifferent_access.values.include?(current_user.email)
-    # end
-
     render :json => {emails: emails}
   end
 
