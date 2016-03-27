@@ -14,14 +14,15 @@ class EmailsController < ApplicationController
     email.sender_email  = current_user.email
 
     if email.save
-      # if email.draf
-
-        # Notification.create(
-        #   user_id: User.where(email: params[:email]).first.id,
-        #   email_id: email.id,
-        #   message: I18n.t("notification_message", name: current_user.email)
-        # )
-
+      unless email.draf
+        receiver_emails = params[:email].values
+        receiver_emails.each do |receiver_email|
+          Notification.create(
+            user_id: User.where(email: receiver_email).first.id,
+            email_id: email.id,
+            message: I18n.t("notification_message", name: current_user.email)
+          )
+        end
         if params[:file]
           params[:file].values.each do |file|
             attachment = AttachFile.new
@@ -31,10 +32,10 @@ class EmailsController < ApplicationController
           end
         end
 
-      # end
+      end
     end
 
-    render :json => {success: email}
+    render :json => {email: email}
   end
 
   def inbox
@@ -46,6 +47,11 @@ class EmailsController < ApplicationController
 
     render :json => {emails: emails}
 
+  end
+
+  def edit
+    email = Email.find(params[:id])
+    render :json => {email: email}
   end
 
   def destroy

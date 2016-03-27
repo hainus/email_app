@@ -3,9 +3,11 @@
     <div class="glyphicon glyphicon-bullhorn" style="padding-top:15px"></div>
     <span class="badge" ng-show="count_no_read > 0">{{count_no_read}}</span>
   <a>
-  <ul class="dropdown-menu">
-    <li ng-repeat="notification in notifications">
-      <a href="#">{{notification.message}}</a>
-    </li>
-  </ul>
+    <ul class="dropdown-menu" >
+      <div class='scrollbar'>
+        <li ng-repeat="notification in notifications">
+          <a href="#">{{notification.message}}</a>
+        </li>
+      </div>
+    </ul>
 </div>
