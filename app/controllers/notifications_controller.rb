@@ -6,7 +6,7 @@ class NotificationsController < ApplicationController
     }
   end
   def update_all_read
-    Notification.where(user_id: current_user.id).update_all(is_viewed: true)
+    Notification.user_noti(current_user.id).update_all(is_viewed: true)
     render :json => {
       ok: true
     }

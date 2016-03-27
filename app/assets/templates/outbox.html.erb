@@ -1,18 +1,18 @@
-<h2>Outbox</h2>
+<h2><%= I18n.t('outbox')%></h2>
 
 Sort by:
-<select ng-model="orderProp" class="form-control" style='width: 120px'>
-  <option value="receiver_email">Reciever</option>
-  <option value="subject">Subject</option>
-  <option value="created_at">Timer</option>
+<select ng-model="orderProp" class="form-control orderProp-outbox">
+  <option value="receiver_email"><%= I18n.t('reciever')%></option>
+  <option value="subject"><%= I18n.t('subject')%></option>
+  <option value="created_at"><%= I18n.t('timer')%></option>
 </select>
 <p>
 
 <table class="table table-bordered">
   <tr>
-    <th>Reciever</th>
-    <th>Subject</th>
-    <th>Timer</th>
+    <th><%= I18n.t('reciever')%></th>
+    <th><%= I18n.t('subject')%></th>
+    <th><%= I18n.t('timer')%></th>
   </tr>
   <tr>
     <th><input type="text" class="form-control" placeholder="search by receiver email" ng-model="search.receiver_email"></th>
@@ -23,7 +23,7 @@ Sort by:
   <tr dir-paginate="email in emails | filter:{receiver_email: search.receiver_email, subject: search.subject, created_at: search.created_at} | orderBy:orderProp | itemsPerPage: 5" pagination-id="outbox">
     <td>{{email.receiver_email}}</td>
     <td>{{email.subject}}</td>
-    <td>{{email.created_at}}</td>
+    <td>{{email.created_at | date:'dd-MM-yyyy'}}</td>
   </tr>
 </table>
 <dir-pagination-controls pagination-id="outbox"></dir-pagination-controls>

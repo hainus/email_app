@@ -1,3 +1,9 @@
 // Place all the styles related to the emails controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.compose-title{
+  padding-left:50px;
+}
+.orderProp-inbox, .orderProp-outbox{
+  width: 120px !important
+}

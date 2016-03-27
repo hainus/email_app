@@ -1,19 +1,20 @@
-<h2>Inbox</h2>
-
+<h2>
+  <%= I18n.t('inbox')%>
+</h2>
 Sort by:
-<select ng-model="orderProp" class="form-control" style='width: 120px'>
-  <option value="sender_email">Sender</option>
-  <option value="subject">Subject</option>
-  <option value="created_at">Timer</option>
+<select ng-model="orderProp" class="form-control orderProp-inbox">
+  <option value="sender_email"><%= I18n.t('sender')%></option>
+  <option value="subject"><%= I18n.t('subject')%></option>
+  <option value="created_at"><%= I18n.t('timer')%></option>
 </select>
 <p>
 
 <table class="table table-bordered">
   <tr>
-    <th>Sender</th>
-    <th>Subject</th>
-    <th>Timer</th>
-    <th>Actions</th>
+    <th><%= I18n.t('sender')%></th>
+    <th><%= I18n.t('subject')%></th>
+    <th><%= I18n.t('timer')%></th>
+    <th><%= I18n.t('actions')%></th>
   </tr>
   <tr>
     <th><input type="text" class="form-control" placeholder="search by sender email" ng-model="search.sender_email"></th>
@@ -26,9 +27,9 @@ Sort by:
 
     <td><a href="#/email_detail/{{email.id}}">{{email.sender_email}}</a> </td>
     <td>{{email.subject}}</td>
-    <td>{{email.created_at}}</td>
+    <td> {{email.created_at | date:'dd-MM-yyyy'}} </td>
     <td>
-      <a href="" class="btn btn-danger btn-sm" ng-click="destroy(email.id)">Delete</a>
+      <a href="" class="btn btn-danger btn-sm" ng-click="destroy(email.id)"><%= I18n.t('delete')%></a>
     </td>
   </tr>
 </table>

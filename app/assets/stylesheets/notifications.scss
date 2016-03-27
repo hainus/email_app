@@ -1,0 +1,18 @@
+// Place all the styles related to the notifications controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.scrollbar
+{
+  // margin-left: 30px;
+  float: left;
+  height: 200px;
+  width: 270px;
+  background: white;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 25px;
+  padding-left: 10px
+}
+.noti-icon{
+  padding-top:15px
+}

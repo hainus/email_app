@@ -1,25 +1,25 @@
-<h2>Contacts</h2>
+<h2><%= I18n.t('contacts')%></h2>
 
 Sort by:
-<select ng-model="orderProp" class="form-control" style='width: 120px'>
-  <option value="name">Name</option>
-  <option value="email">Email</option>
-  <option value="phone_number">Phone number</option>
+<select ng-model="orderProp" class="form-control orderProp">
+  <option value="name"><%= I18n.t('name')%></option>
+  <option value="email"><%= I18n.t('email')%></option>
+  <option value="phone_number"><%= I18n.t('phone_number')%></option>
 </select>
 <p>
 
 <table class="table table-bordered">
   <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Phone Number</th>
-    <th>Actions</th>
+    <th><%= I18n.t('name')%></th>
+    <th><%= I18n.t('email')%></th>
+    <th><%= I18n.t('phone_number')%></th>
+    <th><%= I18n.t('actions')%></th>
   </tr>
   <tr>
     <th><input type="text" class="form-control" placeholder="search by name" ng-model="search.name"></th>
     <th><input type="text" class="form-control" placeholder="search by email" ng-model="search.email"></th>
     <th><input type="text" class="form-control" placeholder="search by phone number" ng-model="search.phone_number"></th>
-    <th> Actions </th>
+    <th></th>
   </tr>
 
   <!-- paging -->
@@ -28,11 +28,11 @@ Sort by:
     <td>{{contact.email}}</td>
     <td>{{contact.phone_number}}</td>
     <td>
-      <a href="#/contacts/{{contact.id}}/edit" class="btn btn-success btn-sm">Edit</a>
-      <a href="" class="btn btn-danger btn-sm" ng-click="destroy(contact.id)">Delete</a>
+      <a href="#/contacts/{{contact.id}}/edit" class="btn btn-success btn-sm"><%= I18n.t('edit')%></a>
+      <a href="" class="btn btn-danger btn-sm" ng-click="destroy(contact.id)"><%= I18n.t('delete')%></a>
     </td>
   </tr>
 </table>
 <dir-pagination-controls pagination-id="contact"></dir-pagination-controls>
 </br>
-<a href="#/contacts/new" class="btn btn-primary btn-sm add-new">New contact</a>
+<a href="#/contacts/new" class="btn btn-primary btn-sm add-new"><%= I18n.t('new_contact')%></a>

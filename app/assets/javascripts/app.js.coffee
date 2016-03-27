@@ -44,6 +44,14 @@ email_app.config(['$routeProvider', ($routeProvider) ->
     templateUrl: '/assets/drafts.html',
     controller: 'DrafCtrl'
   }).
+
+
+  when('/compose/:id/edit', {
+    templateUrl: '/assets/compose.html',
+    controller: 'editDraftCtrl'
+  }).
+
+
   when('/inbox', {
     templateUrl: '/assets/inbox.html',
     controller: 'InboxCtrl'

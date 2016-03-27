@@ -1,0 +1,48 @@
+<h2 class='compose-title'><%= I18n.t('compose_message')%></h2>
+<form class="form-horizontal">
+
+  <div class="form-group">
+    <label for="email" class="col-sm-2 control-label">To</label>
+
+    <div class="col-md-6">
+      <ui-select multiple ng-model="receivers.receivers" theme="bootstrap" ng-disabled="disabled" sortable="true">
+        <ui-select-match>{{$item.email}}</ui-select-match>
+        <ui-select-choices repeat="contact in contacts | filter: {name: $select.search}">
+          <div ng-bind-html="contact.name | highlight: $select.search" ></div>
+            ({{contact.email}})
+        </ui-select-choices>
+      </ui-select>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="subject" class="col-sm-2 control-label"><%= I18n.t('subject')%></label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" placeholder="Subject..." ng-model="email.subject">
+    </div>
+  </div>
+
+  <div class="form-group">
+  	<label for="subject" class="col-sm-2 control-label"><%= I18n.t('attachments')%></label>
+  	<div class="col-sm-6">
+          <input type="file" ngf-select multiple ng-model="attachments"/>
+	   </div>
+	</div>
+
+	<div class="form-group">
+    <label for="subject" class="col-sm-2 control-label"><%= I18n.t('content')%></label>
+    <div class="col-sm-6">
+			<textarea class="form-control" rows="10" placeholder="Content..." ng-model="email.content"></textarea>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-6">
+      <button type="submit" class="btn btn-success" ng-click="send(email, false)"><%= I18n.t('send')%></button>
+      <button type="submit" class="btn btn-warning" ng-click="send(email, true)"><%= I18n.t('draf')%></button>
+      <button type="submit" class="btn btn-cancel"><%= I18n.t('cancel')%></button>
+    </div>
+  </div>
+
+</form>
