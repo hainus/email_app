@@ -15,14 +15,6 @@ class EmailsController < ApplicationController
 
     if email.save
       unless email.draf
-        receiver_emails = params[:email].values
-        receiver_emails.each do |receiver_email|
-          Notification.create(
-            user_id: User.where(email: receiver_email).first.id,
-            email_id: email.id,
-            message: I18n.t("notification_message", name: current_user.email)
-          )
-        end
         if params[:file]
           params[:file].values.each do |file|
             attachment = AttachFile.new
