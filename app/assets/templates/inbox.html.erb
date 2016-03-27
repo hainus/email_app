@@ -19,7 +19,7 @@ Sort by:
   <tr>
     <th><input type="text" class="form-control" placeholder="search by sender email" ng-model="search.sender_email"></th>
     <th><input type="text" class="form-control" placeholder="search by subject" ng-model="search.subject"></th>
-    <th><input type="text" class="form-control" placeholder="search by subject" ng-model="search.created_at"></th>
+    <th><input type="text" class="form-control" placeholder="search by Timer" ng-model="search.created_at"></th>
     <th></th>
   </tr>
   <!-- paging -->
@@ -29,6 +29,7 @@ Sort by:
     <td>{{email.subject}}</td>
     <td> {{email.created_at | date:'dd-MM-yyyy'}} </td>
     <td>
+      <a href="#/compose/{{email.id}}/edit" class="btn btn-success btn-sm"><%= I18n.t('edit')%></a>
       <a href="" class="btn btn-danger btn-sm" ng-click="destroy(email.id)"><%= I18n.t('delete')%></a>
     </td>
   </tr>

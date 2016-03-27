@@ -17,6 +17,7 @@
 //= require angular-resource
 //= require app
 //= require directives
+//= require filters
 //= require bootstrap
 //= require angular-route
 //= require ng-table

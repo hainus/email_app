@@ -1,5 +1,5 @@
 <p><%= I18n.t('from')%>: {{email.sender_email}}</p>
-<p><%= I18n.t('to')%>: {{email.receiver_email}}</p>
+<p><%= I18n.t('to')%>: {{email.receiver_email | email}}</p>
 <h5>{{email.subject}}</h5>
 <p>{{email.content}}</p>
 <div ng-repeat="attachment in email.attachments">
