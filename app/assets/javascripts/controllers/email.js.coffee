@@ -111,9 +111,16 @@ email_app.controller 'editDraftCtrl', [
   '$routeParams'
   '$http'
   '$location'
-  ($scope, $routeParams, $http, $location) ->
+  'Upload'
+  ($scope, $routeParams, $http, $location, Upload) ->
+    $scope.receivers = {
+      receivers: []
+    };
+    $http.get(Routes.contacts_path()).success (response) ->
+      $scope.contacts = response.contacts
+
     $http.get(Routes.edit_email_path({id: $routeParams.id})).success (response) ->
-      console.log (response)
+      $scope.receivers.receivers = eval(response.receiver_email)
       $scope.email = response.email
 
     $scope.send = (message, draft) ->
